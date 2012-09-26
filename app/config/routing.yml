@@ -1,0 +1,9 @@
+phpfreaks_site:
+    resource: "@PhpfreaksSiteBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+# Internal routing configuration to handle ESI
+#_internal:
+#    resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
+#    prefix:   /_internal
