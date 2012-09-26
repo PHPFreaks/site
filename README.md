@@ -4,7 +4,7 @@ PHPFreaks Main Site
 
 Setup
 -----
-git clone git://github.com/PHPFreaks/site.git phpfsite
+git clone git@github.com:PHPFreaks/site.git phpfsite
 
 Make sure you have installed [Composer][].
 [Composer]: http://getcomposer.org
