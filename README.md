@@ -1,4 +1,4 @@
-site
+Site
 ====
 PHPFreaks Main Site
 
@@ -25,5 +25,5 @@ If all goes well, you should be able to get a response from:
 
 Coding Standards
 ----
-Please use the [PSR-0][] coding standards for changes to the code.
-[PSR-0]: https://gist.github.com/1234504
+Please use the [PSR-2][] coding standards / style for changes to the code.
+[PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md
