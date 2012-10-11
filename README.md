@@ -26,4 +26,4 @@ If all goes well, you should be able to get a response from:
 Coding Standards
 ----
 Please use the [PSR-2][] coding standards / style for changes to the code.
-[PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md
+[PSR-2]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md
