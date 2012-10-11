@@ -16,7 +16,7 @@ Make sure you have installed [Composer][].
     
 This should checkout all the libraries, build you a vendor directory and handle autoloader.
 
-Point a vhost to phpfsite/web
+Point a vhost to phpfsite/public
 
 If all goes well, you should be able to get a response from:
 
