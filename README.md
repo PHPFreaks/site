@@ -9,6 +9,8 @@ git clone git@github.com:PHPFreaks/site.git phpfsite
 Make sure you have installed [Composer][].
 [Composer]: http://getcomposer.org
 
+* A side note, if you get failures or script errors, change your php.ini for cli timeout to be > 300 seconds 
+
     cd phpfsite
     composer install
     
