@@ -1,4 +1,4 @@
-site
+Site
 ====
 PHPFreaks Main Site
 
@@ -8,6 +8,8 @@ git clone git@github.com:PHPFreaks/site.git phpfsite
 
 Make sure you have installed [Composer][].
 [Composer]: http://getcomposer.org
+
+* A side note, if you get failures or script errors, change your php.ini for cli timeout to be > 300 seconds 
 
     cd phpfsite
     composer install
@@ -21,3 +23,7 @@ If all goes well, you should be able to get a response from:
     yourvhost.domain.tld/hello/world
 
 
+Coding Standards
+----
+Please use the [PSR-2][] coding standards / style for changes to the code.
+[PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md
