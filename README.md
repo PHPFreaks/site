@@ -11,8 +11,9 @@ Make sure you have installed [Composer][].
 
 * A side note, if you get failures or script errors, change your php.ini for cli timeout to be > 300 seconds 
 
-    cd phpfsite
-    composer install
+    `cd phpfsite`
+
+    `composer install`
     
 This should checkout all the libraries, build you a vendor directory and handle autoloader.
 
