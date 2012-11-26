@@ -17,11 +17,14 @@ Make sure you have installed [Composer][].
     
 This should checkout all the libraries, build you a vendor directory and handle autoloader.
 
+Then update your configuration parameters, found at `app/config/parameters.yml`. A default version is available
+for you to copy from, located at `app/config/parameters.dist.yml`. 
+
 Point a vhost to `phpfsite/public`
 
 If all goes well, you should be able to get a response from:
 
-    yourvhost.domain.tld/hello/world
+    yourvhost.domain.tld/
 
 
 Coding Standards
