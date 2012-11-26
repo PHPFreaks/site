@@ -23,3 +23,7 @@ phpfreaks_page:
   pattern: /page/{page}
   defaults:
     _controller: PhpfreaksSiteBundle:Site:page
+
+# Load up the articles
+PhpfreaksSiteBundle_article:
+  resource: "@PhpfreaksSiteBundle/Resources/config/routing/article.yml"
