@@ -1,0 +1,25 @@
+phpfreaks_index:
+  pattern: /
+  defaults:
+    _controller: PhpfreaksSiteBundle:Site:index
+
+# Alternate index
+phpfreaks_index_alt1:
+  pattern: /index
+  defaults:
+    _controller: FrameworkBundle:Redirect:redirect
+    route: phpfreaks_index
+    permanent: true
+
+# Alternate index (also prevents static page from loading the homepage on accident)
+phpfreaks_index_alt2:
+  pattern: /page/index
+  defaults:
+    _controller: FrameworkBundle:Redirect:redirect
+    route: phpfreaks_index
+    permanent: true
+
+phpfreaks_page:
+  pattern: /page/{page}
+  defaults:
+    _controller: PhpfreaksSiteBundle:Site:page

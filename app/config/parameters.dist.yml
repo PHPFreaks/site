@@ -12,4 +12,8 @@ parameters:
     mailer_password:   ~
 
     locale:            en
-    secret:            ThisTokenIsNotSoSecretChangeIt
+    secret:            SeCr3tT0k3n
+
+    ipb_url:           http://forums.phpfreaks.dev
+    ipb_connect_url:   http://forums.phpfreaks.dev/ipsconnect.php
+    ipb_connect_key:   ~
