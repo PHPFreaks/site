@@ -6,28 +6,29 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
-* Phpfreaks\SiteBundle\Entity\User
-*
-* @ORM\Table(name="users")
-* @ORM\Entity(repositoryClass="Phpfreaks\SiteBundle\Entity\UserRepository")
-*/
+ * Phpfreaks\SiteBundle\Entity\User
+ *
+ * @ORM\Entity
+ * @ORM\Table(name="users")
+ * @ORM\Entity(repositoryClass="Phpfreaks\SiteBundle\Entity\UserRepository")
+ */
 class User implements UserInterface
     {
     /**
-    * @ORM\Column(type="integer")
-    * @ORM\Id
-    * @ORM\GeneratedValue(strategy="AUTO")
-    */
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
     private $id;
 
     /**
-    * @ORM\Column(type="string", length=255, unique=true)
-    */
+     * @ORM\Column(type="string", length=255, unique=true)
+     */
     private $username;
 
     /**
-    * @ORM\Column(type="string", length=32)
-    */
+     * @ORM\Column(type="string", length=32)
+     */
     private $password;
 
     /**
@@ -36,19 +37,24 @@ class User implements UserInterface
     private $salt;
 
     /**
-    * @ORM\Column(type="string", length=255, unique=true)
-    */
+     * @ORM\Column(type="string", length=255, unique=true)
+     */
     private $email;
 
     /**
-    * @ORM\Column(type="integer")
-    */
+     * @ORM\Column(type="integer")
+     */
     private $connect_id = 0;
 
     /**
-    * @ORM\Column(name="is_active", type="boolean")
-    */
+     * @ORM\Column(name="is_active", type="boolean")
+     */
     private $isActive;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Article", mappedBy="author")
+     */
+    protected $articles;
 
     public function __construct()
     {
@@ -186,5 +192,38 @@ class User implements UserInterface
         $this->isActive = $isActive;
     
         return $this;
+    }
+
+    /**
+     * Add articles
+     *
+     * @param \Phpfreaks\SiteBundle\Entity\Article $articles
+     * @return User
+     */
+    public function addArticle(\Phpfreaks\SiteBundle\Entity\Article $articles)
+    {
+        $this->articles[] = $articles;
+    
+        return $this;
+    }
+
+    /**
+     * Remove articles
+     *
+     * @param \Phpfreaks\SiteBundle\Entity\Article $articles
+     */
+    public function removeArticle(\Phpfreaks\SiteBundle\Entity\Article $articles)
+    {
+        $this->articles->removeElement($articles);
+    }
+
+    /**
+     * Get articles
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getArticles()
+    {
+        return $this->articles;
     }
 }
