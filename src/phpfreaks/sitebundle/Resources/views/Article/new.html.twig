@@ -1,16 +1,24 @@
-<h1>Article creation</h1>
+{% extends '::base.html.twig' %}
 
-<form action="{{ path('article_create') }}" method="post" {{ form_enctype(form) }}>
-    {{ form_widget(form) }}
-    <p>
-        <button type="submit">Create</button>
-    </p>
-</form>
+{% block body %}
+<article>
+    <header>
+        <h2>Article creation</h2>
+    </header>
 
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('article') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+    <form action="{{ path('article_create') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+        <p>
+            <button type="submit">Create</button>
+        </p>
+    </form>
+
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('article_list') }}">
+                Back to the list
+            </a>
+        </li>
+    </ul>
+</article>
+{% endblock %}

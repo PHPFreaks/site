@@ -1,4 +1,4 @@
-article:
+article_list:
     pattern:  /articles
     defaults: { _controller: "PhpfreaksSiteBundle:Article:index" }
 
@@ -16,15 +16,15 @@ article_show:
     defaults: { _controller: "PhpfreaksSiteBundle:Article:show" }
 
 article_edit:
-    pattern:  /article/{slug}/edit
+    pattern:  /article/{id}/edit
     defaults: { _controller: "PhpfreaksSiteBundle:Article:edit" }
 
 article_update:
-    pattern:  /article/{slug}/update
+    pattern:  /article/{id}/update
     defaults: { _controller: "PhpfreaksSiteBundle:Article:update" }
     requirements: { _method: post }
 
 article_delete:
-    pattern:  /article/{slug}/delete
+    pattern:  /article/{id}/delete
     defaults: { _controller: "PhpfreaksSiteBundle:Article:delete" }
     requirements: { _method: post }

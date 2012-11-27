@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Phpfreaks\SiteBundle\Entity\Article;
+use Phpfreaks\SiteBundle\Entity\BaseEntity;
 use Phpfreaks\SiteBundle\Form\ArticleType;
 
 /**
@@ -87,18 +88,18 @@ class ArticleController extends Controller
     /**
      * Displays a form to edit an existing Article entity.
      */
-    public function editAction( $slug )
+    public function editAction( $id )
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('PhpfreaksSiteBundle:Article')->findOneBySlug( $slug );
+        $entity = $em->getRepository('PhpfreaksSiteBundle:Article')->find( $id );
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Article entity.');
         }
 
         $editForm = $this->createForm(new ArticleType(), $entity);
-        $deleteForm = $this->createDeleteForm( $entity->getId() );
+        $deleteForm = $this->createDeleteForm( $id );
 
         return $this->render('PhpfreaksSiteBundle:Article:edit.html.twig', array(
             'entity'      => $entity,
@@ -110,17 +111,17 @@ class ArticleController extends Controller
     /**
      * Edits an existing Article entity.
      */
-    public function updateAction(Request $request, $slug)
+    public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('PhpfreaksSiteBundle:Article')->findOneBySlug( $slug );
+        $entity = $em->getRepository('PhpfreaksSiteBundle:Article')->find( $id );
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Article entity.');
         }
 
-        $deleteForm = $this->createDeleteForm( $entity->getId() );
+        $deleteForm = $this->createDeleteForm( $id );
         $editForm = $this->createForm(new ArticleType(), $entity);
         $editForm->bind($request);
 
@@ -128,7 +129,7 @@ class ArticleController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('article_edit', array('slug' => $slug)));
+            return $this->redirect($this->generateUrl('article_edit', array('id' => $id)));
         }
 
         return $this->render('PhpfreaksSiteBundle:Article:edit.html.twig', array(
@@ -142,14 +143,14 @@ class ArticleController extends Controller
      * Deletes a Article entity.
      *
      */
-    public function deleteAction(Request $request, $slug)
+    public function deleteAction(Request $request, $id)
     {
-        $form = $this->createDeleteForm( $slug );
+        $form = $this->createDeleteForm( $id );
         $form->bind($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('PhpfreaksSiteBundle:Article')->find( $slug );
+            $entity = $em->getRepository('PhpfreaksSiteBundle:Article')->find( $id );
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Article entity.');

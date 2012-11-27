@@ -6,26 +6,25 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class ArticleType extends AbstractType
+class ItemType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('item', new ItemType())
-            ->add('slug')
-            ->add('author')
+            ->add('title')
+            ->add('content')
         ;
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Phpfreaks\SiteBundle\Entity\Article'
+            'data_class' => 'Phpfreaks\SiteBundle\Entity\Item'
         ));
     }
 
     public function getName()
     {
-        return 'phpfreaks_sitebundle_articletype';
+        return 'phpfreaks_sitebundle_itemtype';
     }
 }

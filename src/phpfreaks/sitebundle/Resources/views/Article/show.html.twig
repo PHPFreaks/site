@@ -3,30 +3,30 @@
 {% block body %}
     <article>
         <header>
-            <h1>Article: {{ entity.title }}</h1>
+            <h2>Article: {{ entity.item.title }}</h2>
             <aside>
                 <ul>
-                    <li>Date created: <time>{{ entity.dateCreated|date('Y-m-d H:i:s') }}</time></li>
-                    <li>Date updated: <time>{{ entity.dateUpdated|date('Y-m-d H:i:s') }}</time></li>
-                    <li>Date deleted: <time>{{ entity.dateDeleted|date('Y-m-d H:i:s') }}</time></li>
+                    <li>Date created: <time>{{ entity.item.dateCreated|date('Y-m-d H:i:s') }}</time></li>
+                    <li>Date updated: <time>{{ entity.item.dateUpdated|date('Y-m-d H:i:s') }}</time></li>
+                    <li>Date deleted: <time>{{ entity.item.dateDeleted|date('Y-m-d H:i:s') }}</time></li>
                 </ul>
             </aside>
         </header>
-        <p>{{ entity.content }}</p>
+        <p>{{ entity.item.content }}</p>
 
         <ul class="record_actions">
             <li>
-                <a href="{{ path('article') }}">
+                <a href="{{ path('article_list') }}">
                     Back to the list
                 </a>
             </li>
             <li>
-                <a href="{{ path('article_edit', { 'slug': entity.slug }) }}">
+                <a href="{{ path('article_edit', { 'id': entity.id }) }}">
                     Edit
                 </a>
             </li>
             <li>
-                <form action="{{ path('article_delete', { 'slug': entity.slug }) }}" method="post">
+                <form action="{{ path('article_delete', { 'id': entity.id }) }}" method="post">
                     {{ form_widget(delete_form) }}
                     <button type="submit">Delete</button>
                 </form>
