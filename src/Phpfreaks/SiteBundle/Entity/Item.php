@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Table(name="entity_items")
  * @ORM\Entity(repositoryClass="Phpfreaks\SiteBundle\Entity\ItemRepository")
+ * @Gedmo\Loggable
  */
 class Item
 {
@@ -28,6 +29,7 @@ class Item
 
     /**
      * @ORM\Column(type="text")
+     * @Gedmo\Versioned
      */
     protected $content;
 
