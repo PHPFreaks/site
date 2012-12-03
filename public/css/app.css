@@ -1,0 +1,216 @@
+/* -------------------------------------------------- 
+   Table of Contents
+-----------------------------------------------------
+:: Shared: Basics
+:: Shared: Header
+:: Shared: Content
+:: Shared: Content Nav
+:: Shared: Footer
+:: Homepage
+:: 
+*/
+
+
+/* -----------------------------------------
+   Shared: Basics
+----------------------------------------- */
+body
+{
+    background-color: #F8F8F8;
+}
+::-moz-selection
+{
+    background: #5af;
+    color: #fff;
+    text-shadow: none;
+}
+::selection
+{
+    background: #5af;
+    color: #fff;
+    text-shadow: none;
+}
+:focus 
+{
+    outline: 0;
+}
+/* -----------------------------------------
+   Shared: Header
+----------------------------------------- */
+body > header
+{
+    background-color: #2d2d2d;
+    margin: 0;
+    padding: 48px 0 0;
+    display: block;
+    position: relative;
+    top: 0;
+}
+body > header > .row 
+{
+    background: #1984bc;
+    background: -moz-linear-gradient(top,  #1984bc 0%, #0779b4 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1984bc), color-stop(100%,#0779b4));
+    background: -webkit-linear-gradient(top,  #1984bc 0%,#0779b4 100%);
+    background: -o-linear-gradient(top,  #1984bc 0%,#0779b4 100%);
+    background: -ms-linear-gradient(top,  #1984bc 0%,#0779b4 100%);
+    background: linear-gradient(to bottom,  #1984bc 0%,#0779b4 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1984bc', endColorstr='#0779b4',GradientType=0 );
+    border: 1px solid #3c97c6;
+    border-bottom: 0;
+    color: #fff;
+}
+h1.logo
+{
+    padding: 0;
+    margin: 10px 0 0;
+}
+h1.logo a 
+{
+    display: block;
+    width: 215px;
+    height: 70px;
+    background: url('../img/logo.png') no-repeat;
+}
+h1.logo a span 
+{
+    display: none;
+}
+.nav-bar 
+{
+    margin: 0;
+    height: 90px;
+    background: none;
+}
+.nav-bar > li , .nav-bar > li:last-child 
+{
+    border: 0;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+.nav-bar > li > a:first-child
+{
+    padding: 36px 16px;
+    line-height: 18px;
+    font: 600 13px 'Open Sans', sans-serif;
+    color: #81c7e7;
+    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+    text-decoration: none;
+}
+.nav-bar > li.active > a:first-child, .nav-bar > li:hover > a:first-child, .nav-bar > li:focus  > a:first-child
+{
+    color: #d5ebf5;
+    background: #1783bb;
+    background: -moz-linear-gradient(top,  #1783bb 0%, #06699c 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1783bb), color-stop(100%,#06699c));
+    background: -webkit-linear-gradient(top,  #1783bb 0%,#06699c 100%);
+    background: -o-linear-gradient(top,  #1783bb 0%,#06699c 100%);
+    background: -ms-linear-gradient(top,  #1783bb 0%,#06699c 100%);
+    background: linear-gradient(to bottom,  #1783bb 0%,#06699c 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1783bb', endColorstr='#06699c',GradientType=0 );
+    border-top: 4px solid #077ab6;
+    padding-top: 32px;
+}
+.nav-bar > li.active a:first-child
+{
+    color: #fff;
+}
+.nav-bar > li:hover
+{
+    background-color: #1783bb;
+}
+.nav-bar > li.has-flyout > a:first-child::after 
+{
+    top: 43px;
+    border-top-color: #81c7e7;
+}
+.nav-bar > li:hover.has-flyout > a:first-child::after 
+{
+    border-top-color: #d5ebf5;
+}
+.nav-bar > li.has-flyout > a.flyout-toggle
+{
+    top: 36px;
+}
+.nav-bar .flyout
+{
+    top: 90px;
+    border-top: 0px;
+}
+ul.flyout li, .nav-bar li ul li
+{
+    border-left-color: #1783bb;
+}
+ul.flyout li a:hover, .nav-bar li ul li a:hover
+{
+    color: #1783bb;
+}
+ul.flyout li:first-child a, .nav-bar li ul li:first-child a
+{
+    border-top: 0px;
+}
+/* -----------------------------------------
+   Shared: Content
+----------------------------------------- */
+#content-area > .row
+{
+    border: 1px solid #eee;
+    background-color: #fff;
+    box-shadow:  0px 0px 20px 0px rgba(0, 0, 0, .06);
+}
+
+
+/* -----------------------------------------
+   Shared: Content Nav (breadcrumbs+search)
+----------------------------------------- */
+#content-nav
+{
+    border-bottom: 1px solid #f2f2f2;
+    margin-bottom: 15px;
+}
+ul.breadcrumbs
+{
+    background: none;
+    border: 0px;
+    padding: 16px 0;
+    margin: 0;
+}
+ul.breadcrumbs li a, ul.breadcrumbs li span
+{
+    text-transform: none;
+}
+ul.breadcrumbs li::before
+{
+    content: "\00bb";
+}
+ul.breadcrumbs li:first-child::before 
+{
+    content: " ";
+}
+#search 
+{
+    margin: 0;
+    padding: 12px 0 0;
+}
+
+/* -----------------------------------------
+   Shared: Footer
+----------------------------------------- */
+footer 
+{
+    margin-top: 50px;
+    background-color: #2d2d2d;
+}
+
+/* -----------------------------------------
+   Homepage
+----------------------------------------- */
+
+
+
+
+/* -----------------------------------------
+   :
+----------------------------------------- */

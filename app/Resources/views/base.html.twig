@@ -1,49 +1,128 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
 
     <title>{% block title %}Welcome!{% endblock %}</title>
 
     <meta name="viewport" content="width=device-width">
 
     {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('css/normalize.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="{{ asset('css/foundation.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
     {% endblock %}
-    <script src="{{ asset('js/vendor/modernizr-2.6.2.min.js') }}"></script>
+
+    <script src="{{ asset('js/modernizr.foundation.js') }}"></script>
+    <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 </head>
 <body>
-    <header>
-        <h1>PHP Freaks</h1>
-        <nav>
-            <ul>
-                <li><a href="{{ path('article_list') }}">Articles</a>
-                    <ul>
-                        <li><a href="{{ path('article_list') }}">All articles</a></li>
-                        <li><a href="{{ path('article_new') }}">Create an article</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-    </header>
-    <section class="content">
-        {% block body %}{% endblock %}
-    </section>
-    <aside>
-        {% block sidebar %}{% endblock %}
-    </aside>
+<header>
+    <div class="row">
+        <div class="four columns">
+            <h1 class="logo">
+                <a href="{{ path('phpfreaks_index') }}" title="PHP Freaks"><span>PHP Freaks</span></a>
+            </h1>
+        </div>
+        <div class="eight columns">
+            <nav>
+                <ul class="nav-bar right">
+                    <li class="has-flyout">
+                        <a href="#">Forums</a>
+                        <a href="#" class="flyout-toggle"><span> </span></a>
+                        <ul class="flyout">
+                            <li><a href="http://forums.phpfreaks.com/forum/13-php-coding-help/">PHP Coding Help</a></li>
+                            <li><a href="http://forums.phpfreaks.com/forum/16-html-help/">HTML Help</a></li>
+                            <li><a href="http://forums.phpfreaks.com/forum/17-css-help/">CSS Help</a></li>
+                            <li><a href="http://forums.phpfreaks.com/forum/18-javascript-help/">JavaScript Help</a></li>
+                            <li><a href="http://forums.phpfreaks.com/forum/15-mysql-help/">MySQL Help</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-flyout">
+                        <a href="#">Articles</a>
+                        <a href="#" class="flyout-toggle"><span> </span></a>
+                        <ul class="flyout">
+                            <li><a href="{{ path('article_list') }}">All articles</a></li>
+                            <li><a href="{{ path('article_new') }}">Create an article</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Tutorials</a></li>
+                    <li><a href="#">News</a></li>
+                    <li class="active"><a href="#">Blogs</a></li>
+                    <li><a href="#">Code Library</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+<div role="main" id="content-area">
+    <div class="row">
+        <div class="twelve columns">
+            <div class="row" id="content-nav">
+                <div class="eight columns">
+                    <nav>
+                        <ul class="breadcrumbs">
+                            <li><a href="{{ path('phpfreaks_index') }}">Home</a></li>
+                            <li><a href="#">Blogs</a></li>
+                            <li><a href="#">Philip's Blog</a></li>
+                            <li class="current"><span>Some foobar blog post</span></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="four columns">
+                    <form id="search">
+                        <div class="row collapse">
+                            <div class="ten mobile-three columns">
+                                <input type="text" placeholder="Search...">
+                            </div>
+                            <div class="two mobile-one columns">
+                                <input type="submit" class="button expand postfix" value="Go">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div><!-- end content-nav.row -->
+            <div class="row">
+                <div class="twelve columns">
+                    <div class="panel">
+                        <!-- start content -->
+                        {% block body %}{% endblock %}
+                        <!-- end content -->
+                    </div>
+                </div>
+            </div><!-- end content-content .row -->
+        </div><!-- end .twelve.columns -->
+    </div><!-- end .row -->
+</div><!-- end role="main" -->
 
     {% block javascripts %}
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="{{ asset('js/vendor/jquery-1.8.2.min.js') }}"><\/script>')</script>
-    <script src="{{ asset('js/plugins.js') }}"></script>
-    <script src="{{ asset('js/main.js') }}"></script>
+    <script>window.jQuery || document.write('<script src="{{ asset('js/jquery.js') }}"><\/script>')</script>
+    <script src="{{ asset('js/jquery.foundation.mediaQueryToggle.js') }}"></script>
+    <script src="{{ asset('js/jquery.foundation.forms.js') }}"></script>
+    <script src="{{ asset('js/jquery.foundation.reveal.js') }}"></script>
+    <script src="{{ asset('js/jquery.foundation.orbit.js') }}"></script>
+    <script src="{{ asset('js/jquery.foundation.navigation.js') }}"></script>
+    <script src="{{ asset('js/jquery.foundation.buttons.js') }}"></script>
+    <script src="{{ asset('js/jquery.foundation.tabs.js') }}"></script>
+    <script src="{{ asset('js/jquery.foundation.tooltips.js') }}"></script>
+    <script src="{{ asset('js/jquery.foundation.accordion.js') }}"></script>
+    <script src="{{ asset('js/jquery.placeholder.js') }}"></script>
+    <script src="{{ asset('js/jquery.foundation.alerts.js') }}"></script>
+    <script src="{{ asset('js/jquery.foundation.topbar.js') }}"></script>
+    <script src="{{ asset('js/jquery.foundation.joyride.js') }}"></script>
+    <script src="{{ asset('js/jquery.foundation.clearing.js') }}"></script>
+    <script src="{{ asset('js/jquery.foundation.magellan.js') }}"></script>
+
+    <script src="{{ asset('js/app.js') }}"></script>
     {% endblock %}
 
     <script>
