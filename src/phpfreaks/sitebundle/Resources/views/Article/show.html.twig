@@ -4,6 +4,7 @@
     <article>
         <header>
             <h2>Article: {{ entity.item.title }}</h2>
+            <h4>Created by: <a href="{{ path('user_show', {'id': entity.author.id }) }}">{{ entity.author.username }}</a></h4>
             <aside>
                 <ul>
                     <li>Date created: <time>{{ entity.item.dateCreated|date('Y-m-d H:i:s') }}</time></li>

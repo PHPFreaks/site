@@ -70,6 +70,8 @@ class ArticleController extends Controller
         $entity  = new Article();
         $form = $this->createForm(new ArticleType(), $entity);
         $form->bind($request);
+        $entity->setAuthor($this->get('security.context')->getToken()->getUser());
+
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();

@@ -12,7 +12,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\Table(name="users")
  * @ORM\Entity(repositoryClass="Phpfreaks\SiteBundle\Entity\UserRepository")
  */
-class User implements UserInterface
+class User implements UserInterface, \Serializable
     {
     /**
      * @ORM\Column(type="integer")
@@ -59,6 +59,17 @@ class User implements UserInterface
     public function __construct()
     {
         $this->isActive = true;
+        $this->salt = md5(uniqid(null, true));
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 
     public function getUsername( )
@@ -88,22 +99,12 @@ class User implements UserInterface
 
     public function getRoles( )
     {
-        return;
+        return array('ROLE_USER');
     }
 
     public function eraseCredentials( )
     {
         return;
-    }
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
     }
 
     /**
@@ -225,5 +226,25 @@ class User implements UserInterface
     public function getArticles()
     {
         return $this->articles;
+    }
+
+    /**
+     * @see \Serializable::serialize()
+     */
+    public function serialize()
+    {
+        return serialize(array(
+            $this->id,
+        ));
+    }
+
+    /**
+     * @see \Serializable::unserialize()
+     */
+    public function unserialize($serialized)
+    {
+        list (
+            $this->id,
+            ) = unserialize($serialized);
     }
 }

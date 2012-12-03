@@ -27,3 +27,13 @@ phpfreaks_page:
 # Load up the articles
 PhpfreaksSiteBundle_article:
   resource: "@PhpfreaksSiteBundle/Resources/config/routing/article.yml"
+# Load up the articles
+PhpfreaksSiteBundle_user:
+  resource: "@PhpfreaksSiteBundle/Resources/config/routing/user.yml"
+
+
+login:
+    pattern: /login
+    defaults: { _controller: "PhpfreaksSiteBundle:User:login" }
+login_check:
+    pattern:   /login_check

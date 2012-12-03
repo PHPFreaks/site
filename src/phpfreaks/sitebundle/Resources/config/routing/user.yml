@@ -1,0 +1,30 @@
+user_list:
+    pattern:  /users
+    defaults: { _controller: "PhpfreaksSiteBundle:User:index" }
+
+user_show:
+    pattern:  /user/{id}/show
+    defaults: { _controller: "PhpfreaksSiteBundle:User:show" }
+
+user_new:
+    pattern:  /user/new
+    defaults: { _controller: "PhpfreaksSiteBundle:User:new" }
+
+user_create:
+    pattern:  /user/create
+    defaults: { _controller: "PhpfreaksSiteBundle:User:create" }
+    requirements: { _method: post }
+
+user_edit:
+    pattern:  /user/{id}/edit
+    defaults: { _controller: "PhpfreaksSiteBundle:User:edit" }
+
+user_update:
+    pattern:  /user/{id}/update
+    defaults: { _controller: "PhpfreaksSiteBundle:User:update" }
+    requirements: { _method: post }
+
+user_delete:
+    pattern:  /user/{id}/delete
+    defaults: { _controller: "PhpfreaksSiteBundle:User:delete" }
+    requirements: { _method: post }
