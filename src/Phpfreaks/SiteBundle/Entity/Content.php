@@ -29,11 +29,11 @@ class Content
      * @ORM\Column(type="text")
      * @Gedmo\Versioned
      */
-    protected $content;
+    private $content;
 
     /**
      * @Gedmo\Slug(fields={"title"})
-     * @ORM\Column(type="text", length=128, unique=true)
+     * @ORM\Column(type="string", length=128, unique=true)
      */
     private $slug;
 
@@ -53,6 +53,12 @@ class Content
      * @ORM\Column(name="dateDeleted", type="datetime", nullable=true)
      */
     private $dateDeleted = null;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="author", referencedColumnName="id")
+     */
+    private $author;
 
     // @TODO: Add Tags
     // @TODO: Add Categories
@@ -201,5 +207,41 @@ class Content
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Content
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    
+        return $this;
+    }
+
+    /**
+     * Set author
+     *
+     * @param \Phpfreaks\SiteBundle\Entity\User $author
+     * @return Content
+     */
+    public function setAuthor(\Phpfreaks\SiteBundle\Entity\User $author = null)
+    {
+        $this->author = $author;
+    
+        return $this;
+    }
+
+    /**
+     * Get author
+     *
+     * @return \Phpfreaks\SiteBundle\Entity\User 
+     */
+    public function getAuthor()
+    {
+        return $this->author;
     }
 }

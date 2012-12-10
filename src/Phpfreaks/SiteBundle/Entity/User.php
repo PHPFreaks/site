@@ -51,11 +51,6 @@ class User implements UserInterface, \Serializable
      */
     private $isActive;
 
-    /**
-     * @ORM\OneToMany(targetEntity="Article", mappedBy="author")
-     */
-    protected $articles;
-
     public function __construct()
     {
         $this->isActive = true;
@@ -193,39 +188,6 @@ class User implements UserInterface, \Serializable
         $this->isActive = $isActive;
     
         return $this;
-    }
-
-    /**
-     * Add articles
-     *
-     * @param \Phpfreaks\SiteBundle\Entity\Article $articles
-     * @return User
-     */
-    public function addArticle(\Phpfreaks\SiteBundle\Entity\Article $articles)
-    {
-        $this->articles[] = $articles;
-    
-        return $this;
-    }
-
-    /**
-     * Remove articles
-     *
-     * @param \Phpfreaks\SiteBundle\Entity\Article $articles
-     */
-    public function removeArticle(\Phpfreaks\SiteBundle\Entity\Article $articles)
-    {
-        $this->articles->removeElement($articles);
-    }
-
-    /**
-     * Get articles
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getArticles()
-    {
-        return $this->articles;
     }
 
     /**
