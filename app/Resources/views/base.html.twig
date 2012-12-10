@@ -127,9 +127,9 @@
 
     <script>
         var _gaq = _gaq || [];
-        var _gaq.push(['phpf._setAccount', 'UA-XXXXX-X']);
+        _gaq.push(['phpf._setAccount', 'UA-XXXXX-X']);
         {% block custom_google_analytics %}{% endblock %}
-        var _gaq.push(['phpf._trackPageview']);
+        _gaq.push(['phpf._trackPageview']);
 
         (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
             g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
