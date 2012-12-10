@@ -4,6 +4,7 @@ namespace Phpfreaks\SiteBundle\Entity;
 
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Phpfreaks\SiteBundle\Entity\Content
@@ -14,6 +15,8 @@ use Doctrine\ORM\Mapping as ORM;
 class Content
 {
     /**
+     * @var $id
+     *
      * @ORM\Column(type="bigint")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -21,40 +24,64 @@ class Content
     private $id;
 
     /**
+     * @var $title
+     *
+     * @Assert\NotBlank(message="You cannot leave the title blank")
+     * @Assert\NotNull(message="You cannot leave the title null")
+     * @Assert\MinLength(limit=5, message="Your title should be at least 5 characters in length")
+     * @Assert\MaxLength(limit=255, message="Your title cannot be longer than 255 characters")
+     *
      * @ORM\Column(type="string", length=255)
      */
     private $title = '';
 
     /**
+     * @var $content
+     *
+     * @Assert\NotBlank(message="You cannot leave the content blank")
+     * @Assert\NotNull(message="You cannot leave the content null")
+     *
      * @ORM\Column(type="text")
      * @Gedmo\Versioned
      */
     private $content;
 
     /**
+     * @var $slug
+     *
      * @Gedmo\Slug(fields={"title"})
      * @ORM\Column(type="string", length=128, unique=true)
      */
     private $slug;
 
     /**
+     * @var $dateCreated
+     *
      * @Gedmo\Timestampable(on="create")
      * @ORM\Column(type="datetime")
      */
     private $dateCreated;
 
     /**
+     * @var $dateUpdated
+     *
      * @Gedmo\Timestampable(on="update")
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $dateUpdated;
 
     /**
+     * @var $dateDeleted
+     *
      * @ORM\Column(name="dateDeleted", type="datetime", nullable=true)
      */
     private $dateDeleted = null;
 
     /**
+     * @var $author
+     *
+     * @Assert\NotNull(message="There needs to be an author to this content")
+     *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumn(name="author", referencedColumnName="id")
      */
