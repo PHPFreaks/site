@@ -22,11 +22,11 @@
             {% for entity in entities %}
                 <tr>
                     <td><a href="{{ path('article_show', { 'slug': entity.slug }) }}">{{ entity.id }}</a></td>
-                    <td>{{ entity.item.title }}</td>
-                    <td>{{ entity.item.content|escape('html') }}</td>
-                    <td>{% if entity.item.dateCreated %}{{ entity.item.dateCreated|date('Y-m-d H:i:s') }}{% endif %}</td>
-                    <td>{% if entity.item.dateUpdated %}{{ entity.item.dateUpdated|date('Y-m-d H:i:s') }}{% endif %}</td>
-                    <td>{% if entity.item.dateDeleted %}{{ entity.item.dateDeleted|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    <td>{{ entity.title }}</td>
+                    <td>{{ entity.content|escape('html') }}</td>
+                    <td>{% if entity.dateCreated %}{{ entity.dateCreated|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    <td>{% if entity.dateUpdated %}{{ entity.dateUpdated|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    <td>{% if entity.dateDeleted %}{{ entity.dateDeleted|date('Y-m-d H:i:s') }}{% endif %}</td>
                     <td>{{ entity.slug }}</td>
                     <td>
                         <ul>

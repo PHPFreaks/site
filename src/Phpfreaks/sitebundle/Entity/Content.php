@@ -6,14 +6,12 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Phpfreaks\SiteBundle\Entity\Item
+ * Phpfreaks\SiteBundle\Entity\Content
  *
- * @ORM\Entity
- * @ORM\Table(name="entity_items")
- * @ORM\Entity(repositoryClass="Phpfreaks\SiteBundle\Entity\ItemRepository")
+ * @ORM\MappedSuperclass
  * @Gedmo\Loggable
  */
-class Item
+class Content
 {
     /**
      * @ORM\Column(type="bigint")
@@ -34,6 +32,12 @@ class Item
     protected $content;
 
     /**
+     * @Gedmo\Slug(fields={"title"})
+     * @ORM\Column(type="text", length=128, unique=true)
+     */
+    private $slug;
+
+    /**
      * @Gedmo\Timestampable(on="create")
      * @ORM\Column(type="datetime")
      */
@@ -50,8 +54,13 @@ class Item
      */
     private $dateDeleted = null;
 
+    // @TODO: Add Tags
+    // @TODO: Add Categories
+    // @TODO: Add Comments
+    // @TODO: Add Ratings & Averages
+
     /**
-     *
+     * Constructor
      */
     public function __construct( )
     {
@@ -77,14 +86,14 @@ class Item
     public function setTitle($title)
     {
         $this->title = $title;
-    
+
         return $this;
     }
 
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -100,14 +109,14 @@ class Item
     public function setContent($content)
     {
         $this->content = $content;
-    
+
         return $this;
     }
 
     /**
      * Get content
      *
-     * @return string 
+     * @return string
      */
     public function getContent()
     {
@@ -123,14 +132,14 @@ class Item
     public function setDateCreated($dateCreated)
     {
         $this->dateCreated = $dateCreated;
-    
+
         return $this;
     }
 
     /**
      * Get dateCreated
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDateCreated()
     {
@@ -146,14 +155,14 @@ class Item
     public function setDateUpdated($dateUpdated)
     {
         $this->dateUpdated = $dateUpdated;
-    
+
         return $this;
     }
 
     /**
      * Get dateUpdated
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDateUpdated()
     {
@@ -169,18 +178,28 @@ class Item
     public function setDateDeleted($dateDeleted)
     {
         $this->dateDeleted = $dateDeleted;
-    
+
         return $this;
     }
 
     /**
      * Get dateDeleted
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDateDeleted()
     {
         return $this->dateDeleted;
     }
 
+
+    /**
+     * Get slug
+     *
+     * @return \varchar
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
 }
