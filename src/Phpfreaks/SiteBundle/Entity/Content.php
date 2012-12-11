@@ -97,6 +97,12 @@ class Content
      */
     private $category;
 
+    /**
+     * @var $tags
+     */
+    private $tags;
+
+
     // @TODO: Add Tags
     // @TODO: Add Comments
     // @TODO: Add Ratings & Averages
@@ -106,7 +112,7 @@ class Content
      */
     public function __construct( )
     {
-
+        $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -302,5 +308,38 @@ class Content
     public function getCategory()
     {
         return $this->category;
+    }
+
+    /**
+     * Add tags
+     *
+     * @param \Phpfreaks\SiteBundle\Entity\Tag $tags
+     * @return Content
+     */
+    public function addTag(\Phpfreaks\SiteBundle\Entity\Tag $tags)
+    {
+        $this->tags[] = $tags;
+    
+        return $this;
+    }
+
+    /**
+     * Remove tags
+     *
+     * @param \Phpfreaks\SiteBundle\Entity\Tag $tags
+     */
+    public function removeTag(\Phpfreaks\SiteBundle\Entity\Tag $tags)
+    {
+        $this->tags->removeElement($tags);
+    }
+
+    /**
+     * Get tags
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTags()
+    {
+        return $this->tags;
     }
 }

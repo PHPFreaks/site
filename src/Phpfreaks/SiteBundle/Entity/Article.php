@@ -17,9 +17,49 @@ use Phpfreaks\SiteBundle\Entity\Content;
 class Article extends Content
 {
 
+    /**
+     * @var $tags
+     *
+     * @ORM\ManyToMany(targetEntity="Tag")
+     */
+    private $tags;
+
     public function __construct()
     {
         parent::__construct();
     }
     
+
+    /**
+     * Add tags
+     *
+     * @param \Phpfreaks\SiteBundle\Entity\Tag $tag
+     * @return Article
+     */
+    public function addTag(\Phpfreaks\SiteBundle\Entity\Tag $tag)
+    {
+        $this->tags[] = $tag;
+    
+        return $this;
+    }
+
+    /**
+     * Remove tags
+     *
+     * @param \Phpfreaks\SiteBundle\Entity\Tag $tags
+     */
+    public function removeTag(\Phpfreaks\SiteBundle\Entity\Tag $tag)
+    {
+        $this->tags->removeElement($tag);
+    }
+
+    /**
+     * Get tags
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
 }
