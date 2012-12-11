@@ -23,7 +23,7 @@
 
     <!-- Doc target -->
     <target name="build:doc"
-            depends="build:prepare, doc:phpdoc2, doc:docblox"
+            depends="build:prepare, doc:phpdoc2"
             description="Generates app API documentation." />
 
     <!-- Check target -->
@@ -48,7 +48,6 @@
         <mkdir dir="${dir.build}" />
         <mkdir dir="${dir.docs}" />
         <mkdir dir="${dir.docs.phpdoc2}" />
-        <mkdir dir="${dir.docs.docblox}" />
         <mkdir dir="${dir.reports}" />
         <mkdir dir="${dir.reports.coverage}" />
         <mkdir dir="${dir.reports.pdepend}" />
@@ -63,17 +62,7 @@
         </phpdoc2>
     </target>
 
-    <!-- DocBlox API documentation target -->
-    <target name="doc:docblox" description="Generate API Documentation.">
-        <echo msg="Generating API Documentation with DocBlox ..." />
-        <docblox title="${phing.project.name} :: API Documentation"
-                 destdir="${dir.docs.docblox}"
-                 quiet="false">
-            <fileset refid="sourcecode" />
-        </docblox>
-    </target>
-
-    <!-- Symfony2 code sniffer -->
+    <!-- PSR-1 code sniffer -->
     <target name="check:cs" description="Checks coding standard.">
         <echo msg="Checking coding standard ..." />
         <phpcodesniffer standard="PSR1"
