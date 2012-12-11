@@ -79,7 +79,7 @@
     <!-- Symfony2 code sniffer -->
     <target name="check:cs" description="Checks coding standard.">
         <echo msg="Checking coding standard ..." />
-        <phpcodesniffer standard="Symfony2"
+        <phpcodesniffer standard="PSR1"
                         showSniffs="true"
                         showWarnings="true">
             <fileset refid="sourcecode" />
@@ -119,7 +119,7 @@
     <!-- Unit tests -->
     <target name="test:unit" description="Executes unit tests.">
         <echo msg="Running unit tests ..." />
-        <exec command="phpunit --log-junit ${dir.reports}/phpunit.xml --coverage-clover ${dir.reports.coverage}/clover.xml --coverage-html ${dir.reports.coverage}/ -c ${dir.app}"/>
+        <exec command="phpunit --log-junit ${dir.app}/phpunit.xml --coverage-clover ${dir.reports.coverage}/clover.xml --coverage-html ${dir.reports.coverage}/ -c ${dir.app}"/>
     </target>
 
 </project>
