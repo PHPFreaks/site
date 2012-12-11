@@ -87,8 +87,17 @@ class Content
      */
     private $author;
 
+    /**
+     * @var $category
+     *
+     * @Assert\NotNull(message="You need to select a category")
+     *
+     * @ORM\ManyToOne(targetEntity="Category")
+     * @ORM\JoinColumn(name="category", referencedColumnName="id")
+     */
+    private $category;
+
     // @TODO: Add Tags
-    // @TODO: Add Categories
     // @TODO: Add Comments
     // @TODO: Add Ratings & Averages
 
@@ -270,5 +279,28 @@ class Content
     public function getAuthor()
     {
         return $this->author;
+    }
+
+    /**
+     * Set category
+     *
+     * @param \Phpfreaks\SiteBundle\Entity\Category $category
+     * @return Content
+     */
+    public function setCategory(\Phpfreaks\SiteBundle\Entity\Category $category = null)
+    {
+        $this->category = $category;
+    
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \Phpfreaks\SiteBundle\Entity\Category 
+     */
+    public function getCategory()
+    {
+        return $this->category;
     }
 }
