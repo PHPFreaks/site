@@ -12,7 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\MappedSuperclass
  * @Gedmo\Loggable
  */
-class Content
+abstract class Content
 {
     /**
      * @var $id
@@ -99,6 +99,8 @@ class Content
 
     /**
      * @var $tags
+     *
+     * @ORM\ManyToMany(targetEntity="Tag")
      */
     private $tags;
 
@@ -310,16 +312,17 @@ class Content
         return $this->category;
     }
 
+
     /**
      * Add tags
      *
-     * @param \Phpfreaks\SiteBundle\Entity\Tag $tags
+     * @param \Phpfreaks\SiteBundle\Entity\Tag $tag
      * @return Content
      */
-    public function addTag(\Phpfreaks\SiteBundle\Entity\Tag $tags)
+    public function addTag(\Phpfreaks\SiteBundle\Entity\Tag $tag)
     {
-        $this->tags[] = $tags;
-    
+        $this->tags[] = $tag;
+
         return $this;
     }
 
@@ -328,15 +331,15 @@ class Content
      *
      * @param \Phpfreaks\SiteBundle\Entity\Tag $tags
      */
-    public function removeTag(\Phpfreaks\SiteBundle\Entity\Tag $tags)
+    public function removeTag(\Phpfreaks\SiteBundle\Entity\Tag $tag)
     {
-        $this->tags->removeElement($tags);
+        $this->tags->removeElement($tag);
     }
 
     /**
      * Get tags
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getTags()
     {
