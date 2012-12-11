@@ -107,7 +107,7 @@
         <tstamp>
             <format property="check.date.time" pattern="%Y%m%d-%H%M%S" locale="en_US"/>
         </tstamp>
-        <phploc reportType="cvs" reportName="${check.date.time}-report"
+        <phploc reportType="csv" reportName="${check.date.time}-report"
                 reportDirectory="phploc-reports">
             <fileset dir=".">
                 <include name="**/*.php" />
