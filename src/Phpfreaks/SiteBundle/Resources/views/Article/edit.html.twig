@@ -1,22 +1,25 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Editing article "{{ entity.title }}"{% endblock %}
+
+{% block body %}
 <h1>Article edit</h1>
 
 <form action="{{ path('article_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
     {{ form_widget(edit_form) }}
-    <p>
-        <button type="submit">Edit</button>
-    </p>
+        <ul class="button-group">
+            <li>
+                <button type="submit" class="success button">Save article</button>
+            </li>
+            <li>
+                <a href="{{ path('article_list') }}" class="secondary button">
+                    Cancel
+                </a>
+            </li>
+        </ul>
 </form>
-
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('article_list') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <form action="{{ path('article_delete', { 'id': entity.id }) }}" method="post">
-            {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
-        </form>
-    </li>
-</ul>
+    <form action="{{ path('article_delete', { 'id': entity.id }) }}" method="post">
+        {{ form_widget(delete_form) }}
+        <button type="submit" class="alert button">Delete</button>
+    </form>
+{% endblock %}

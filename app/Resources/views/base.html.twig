@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
 
-    <title>{% block title %}Welcome!{% endblock %}</title>
+    <title>{% block title %}Welcome!{% endblock %} | PHP Freaks</title>
 
     <meta name="viewport" content="width=device-width">
 
@@ -92,11 +92,9 @@
             </div><!-- end content-nav.row -->
             <div class="row">
                 <div class="twelve columns">
-                    <div class="panel">
-                        <!-- start content -->
-                        {% block body %}{% endblock %}
-                        <!-- end content -->
-                    </div>
+                    <!-- start content -->
+                    {% block body %}{% endblock %}
+                    <!-- end content -->
                 </div>
             </div><!-- end content-content .row -->
         </div><!-- end .twelve.columns -->
@@ -127,9 +125,9 @@
 
     <script>
         var _gaq = _gaq || [];
-        _gaq.push(['phpf._setAccount', 'UA-XXXXX-X']);
+        var _gaq.push(['phpf._setAccount', 'UA-XXXXX-X']);
         {% block custom_google_analytics %}{% endblock %}
-        _gaq.push(['phpf._trackPageview']);
+        var _gaq.push(['phpf._trackPageview']);
 
         (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
             g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
