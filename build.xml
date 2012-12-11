@@ -5,7 +5,7 @@
     <property name="dir.src" value="${project.basedir}/src" />
     <property name="dir.build" value="${project.basedir}/app/build" />
     <property name="dir.docs" value="${dir.build}/docs" />
-    <property name="dir.docs.phpdoc" value="${dir.docs}/phpdoc" />
+    <property name="dir.docs.phpdoc2" value="${dir.docs}/phpdoc2" />
     <property name="dir.docs.docblox" value="${dir.docs}/docblox" />
     <property name="dir.reports" value="${dir.build}/logs" />
     <property name="dir.reports.pdepend" value="${dir.reports}/pdepend" />
@@ -23,7 +23,7 @@
 
     <!-- Doc target -->
     <target name="build:doc"
-            depends="build:prepare, doc:phpdoc, doc:docblox"
+            depends="build:prepare, doc:phpdoc2, doc:docblox"
             description="Generates app API documentation." />
 
     <!-- Check target -->
@@ -47,7 +47,7 @@
         <echo msg="Creating build directories ..." />
         <mkdir dir="${dir.build}" />
         <mkdir dir="${dir.docs}" />
-        <mkdir dir="${dir.docs.phpdoc}" />
+        <mkdir dir="${dir.docs.phpdoc2}" />
         <mkdir dir="${dir.docs.docblox}" />
         <mkdir dir="${dir.reports}" />
         <mkdir dir="${dir.reports.coverage}" />
@@ -55,15 +55,15 @@
     </target>
 
     <!-- PHPDOC API documentation target -->
-    <target name="doc:phpdoc" description="Generate API documentation.">
+    <target name="doc:phpdoc2" description="Generate API documentation.">
         <echo msg="Generating API documentation with PHPDoc..." />
-        <phpdoc title="${phing.project.name} :: API Documentation"
+        <phpdoc2 title="${phing.project.name} :: API Documentation"
                 defaultpackagename="${phing.project.name}"
-                destdir="${dir.docs.phpdoc}"
+                destdir="${dir.docs.phpdoc2}"
                 output="HTML:Smarty:PHP"
                 sourcecode="yes">
             <fileset refid="sourcecode" />
-        </phpdoc>
+        </phpdoc2>
     </target>
 
     <!-- DocBlox API documentation target -->
