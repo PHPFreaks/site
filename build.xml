@@ -23,7 +23,7 @@
 
     <!-- Doc target -->
     <target name="build:doc"
-            depends="build:prepare, doc:phpdoc2"
+            depends="build:prepare, doc:phpdoc2, doc:phploc"
             description="Generates app API documentation." />
 
     <!-- Check target -->
@@ -100,6 +100,20 @@
             <logger type="jdepend-chart" outfile="${dir.reports.pdepend}/dependencies.svg" />
             <logger type="overview-pyramid" outfile="${dir.reports.pdepend}/overview-pyramid.svg" />
         </phpdepend>
+    </target>
+
+    <!-- Lines of Code -->
+    <target name="doc:phploc" description="Measures and logs the size of the project" hidden="true">
+        <tstamp>
+            <format property="check.date.time" pattern="%Y%m%d-%H%M%S" locale="en_US"/>
+        </tstamp>
+        <phploc reportType="cvs" reportName="${check.date.time}-report"
+                reportDirectory="phploc-reports">
+            <fileset dir=".">
+                <include name="**/*.php" />
+                <include name="*.php" />
+            </fileset>
+        </phploc>
     </target>
 
     <!-- Unit tests -->
