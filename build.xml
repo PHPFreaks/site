@@ -6,10 +6,11 @@
     <property name="dir.build" value="${project.basedir}/app/build" />
     <property name="dir.docs" value="${dir.build}/docs" />
     <property name="dir.docs.phpdoc2" value="${dir.docs}/phpdoc2" />
-    <property name="dir.docs.docblox" value="${dir.docs}/docblox" />
+    <property name="dir.docs.phploc" value="${dir.docs}/phploc" />
     <property name="dir.reports" value="${dir.build}/logs" />
     <property name="dir.reports.pdepend" value="${dir.reports}/pdepend" />
     <property name="dir.reports.coverage" value="${dir.reports}/coverage" />
+    <property name="dir.api" value="${dir.build}/api" />
 
     <!-- Filesets -->
     <fileset id="sourcecode" dir="${dir.src}">
@@ -51,6 +52,7 @@
         <mkdir dir="${dir.reports}" />
         <mkdir dir="${dir.reports.coverage}" />
         <mkdir dir="${dir.reports.pdepend}" />
+        <mkdir dir="${dir.api}" />
     </target>
 
     <!-- PHPDOC API documentation target -->
