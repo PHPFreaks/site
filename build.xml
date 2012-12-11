@@ -58,10 +58,7 @@
     <target name="doc:phpdoc2" description="Generate API documentation.">
         <echo msg="Generating API documentation with PHPDoc..." />
         <phpdoc2 title="${phing.project.name} :: API Documentation"
-                defaultpackagename="${phing.project.name}"
-                destdir="${dir.docs.phpdoc2}"
-                output="HTML:Smarty:PHP"
-                sourcecode="yes">
+                destdir="${dir.docs.phpdoc2}">
             <fileset refid="sourcecode" />
         </phpdoc2>
     </target>
