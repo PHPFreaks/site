@@ -33,7 +33,7 @@ class User implements UserInterface, \Serializable
     private $password;
 
     /**
-     * @ORM\Column(type="string", length=32)
+     * @ORM\Column(type="string", length=255)
      */
     private $salt;
 
@@ -161,7 +161,7 @@ class User implements UserInterface, \Serializable
      * @param integer $connectId
      * @return User
      */
-    public function setConnectId(\integer $connectId)
+    public function setConnectId($connectId)
     {
         $this->connect_id = $connectId;
     
