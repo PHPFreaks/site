@@ -28,3 +28,7 @@ article_delete:
     pattern:  /article/{id}/delete
     defaults: { _controller: "PhpfreaksSiteBundle:Article:delete" }
     requirements: { _method: post }
+
+article_latest:
+    pattern:  /articles/latest/{limit}
+    defaults: { _controller: "PhpfreaksSiteBundle:Article:latest", limit: 0 }

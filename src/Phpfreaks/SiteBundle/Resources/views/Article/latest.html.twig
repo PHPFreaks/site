@@ -1,0 +1,39 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Latest Articles{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="nine columns">
+            {% for entity in entities %}
+                <article>
+                    <header>
+                        <h3><a href="{{ path('article_show', { 'slug': entity.slug }) }}">{{ entity.title }}</a></h3>
+                        <p>
+                            Created on <time datetime="{{ entity.dateCreated|date('Y-m-d') }}">{{ entity.dateCreated|date('M j, Y') }}</time> by <a href="{{ path('user_show', { 'id': entity.author.id }) }}">{{ entity.author.username }}</a>
+                            {% if (entity.dateUpdated) and not (entity.dateUpdated == entity.dateCreated) %}
+                                | Last Updated: <time datetime="{{ entity.dateUpdated|date('Y-m-d') }}">{{ entity.dateUpdated|date('M j, Y') }}</time>
+                            {% endif %}
+                        </p>
+                    </header>
+                    <p>{{ entity.content|escape('html') }}</p>
+                </article>
+            {% endfor %}
+        </div>
+        <aside class="three columns">
+            <h5>Categories</h5>
+            <ul>
+                <li>Sample categories..</li>
+                <li>Sample category foo</li>
+                <li>Sample bar</li>
+                <li>Lord of the foos</li>
+            </ul>
+            <div class="panel">
+                Shoutout could go here
+            </div>
+            <a href="{{ path('article_new') }}" class="small success button">
+                Add an article
+            </a>
+        </aside>
+    </div>
+{% endblock %}

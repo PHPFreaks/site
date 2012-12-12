@@ -6,7 +6,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Phpfreaks\SiteBundle\Entity\Article;
-use Phpfreaks\SiteBundle\Entity\BaseEntity;
 use Phpfreaks\SiteBundle\Form\ArticleType;
 
 /**
@@ -24,6 +23,21 @@ class ArticleController extends Controller
         $entities = $em->getRepository('PhpfreaksSiteBundle:Article')->findAll();
 
         return $this->render('PhpfreaksSiteBundle:Article:index.html.twig', array(
+            'entities' => $entities,
+        ));
+    }
+
+    /**
+     * Lists the latest Articles.
+     */
+    public function latestAction($limit = 0)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+
+        $entities = $em->getRepository('PhpfreaksSiteBundle:Article')->getLatestContent($limit);
+
+        return $this->render('PhpfreaksSiteBundle:Article:latest.html.twig', array(
             'entities' => $entities,
         ));
     }

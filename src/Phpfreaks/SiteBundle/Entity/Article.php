@@ -10,9 +10,8 @@ use Phpfreaks\SiteBundle\Entity\Content;
 /**
  * Phpfreaks\SiteBundle\Entity\Article
  *
- * @ORM\Entity
- * @ORM\Table(name="articles")
  * @ORM\Entity(repositoryClass="Phpfreaks\SiteBundle\Entity\ArticleRepository")
+ * @ORM\Table(name="articles")
  */
 class Article extends Content
 {
