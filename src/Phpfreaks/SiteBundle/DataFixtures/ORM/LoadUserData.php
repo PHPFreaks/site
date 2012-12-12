@@ -2,13 +2,14 @@
 
 namespace Phpfreaks\SiteBundle\DataFixtures\ORM;
 
-use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\DataFixtures\AbstractFixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Phpfreaks\SiteBundle\Entity\User;
 
-class LoadUserData implements FixtureInterface, ContainerAwareInterface
+class LoadUserData extends AbstractFixture implements ContainerAwareInterface, OrderedFixtureInterface
 {
     /**
      * @var ContainerInterface
@@ -38,5 +39,15 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
         $user->setPassword($encoder->encodePassword('testpass', $user->getSalt()));
         $manager->persist($user);
         $manager->flush();
+
+        $this->setReference('test-user', $user);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getOrder()
+    {
+        return 1;
     }
 }
