@@ -1,6 +1,9 @@
 <?php
 
 namespace Phpfreaks\SiteBundle\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -10,11 +13,14 @@ use Phpfreaks\SiteBundle\Form\ArticleType;
 
 /**
  * Article controller.
+ * @Route("/article")
  */
 class ArticleController extends Controller
 {
     /**
      * Lists all Article entities.
+     * @Route("", name="article");
+     * @Method("GET")
      */
     public function indexAction()
     {
@@ -27,28 +33,11 @@ class ArticleController extends Controller
         ));
     }
 
-    /**
-     * Finds and displays a Article entity.
-     */
-    public function showAction( $slug )
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('PhpfreaksSiteBundle:Article')->findOneBySlug( $slug );
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Article entity.');
-        }
-
-        $deleteForm = $this->createDeleteForm( $entity->getId() );
-
-        return $this->render('PhpfreaksSiteBundle:Article:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),        ));
-    }
-
+ 
     /**
      * Displays a form to create a new Article entity.
+     * @Route("/new", name="article_new");
+     * @Method("GET")
      */
     public function newAction()
     {
@@ -63,6 +52,8 @@ class ArticleController extends Controller
 
     /**
      * Creates a new Article entity.
+     * @Route("/create", name="article_create");
+     * @Method("POST")
      */
     public function createAction(Request $request)
     {
@@ -86,6 +77,8 @@ class ArticleController extends Controller
 
     /**
      * Displays a form to edit an existing Article entity.
+     * @Route("/{slug}/edit", name="article_edit");
+     * @Method("GET")
      */
     public function editAction( $slug )
     {
@@ -108,9 +101,11 @@ class ArticleController extends Controller
     }
 
     /**
-     * Edits an existing Article entity.
+     * Save an updated Article.
+     * @Route("/{slug}/update", name="article_update");
+     * @Method("POST")
      */
-    public function updateAction(Request $request, $slug)
+    public function updateAction($slug)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -140,6 +135,8 @@ class ArticleController extends Controller
 
     /**
      * Deletes a Article entity.
+     * @Route("/{slug}/delete", name="article_delete");
+     * @Method("POST")
      *
      */
     public function deleteAction(Request $request, $slug)
@@ -161,6 +158,28 @@ class ArticleController extends Controller
 
         return $this->redirect($this->generateUrl('article'));
     }
+    
+    /**
+     * Finds and displays a Article entity.
+     * @Route("/{slug}", name="article_show");
+     * @Method("GET")
+     */
+    public function showAction( $slug )
+    {
+    	$em = $this->getDoctrine()->getManager();
+    
+    	$entity = $em->getRepository('PhpfreaksSiteBundle:Article')->findOneBySlug( $slug );
+    
+    	if (!$entity) {
+    		throw $this->createNotFoundException('Unable to find Article entity.');
+    	}
+    
+    	$deleteForm = $this->createDeleteForm( $entity->getId() );
+    
+    	return $this->render('PhpfreaksSiteBundle:Article:show.html.twig', array(
+    			'entity'      => $entity,
+    			'delete_form' => $deleteForm->createView(),        ));
+    }
 
     private function createDeleteForm( $id )
     {
@@ -169,4 +188,7 @@ class ArticleController extends Controller
             ->getForm()
         ;
     }
+    
+
+    
 }

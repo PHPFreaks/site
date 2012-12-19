@@ -1,3 +1,4 @@
 phpfreaks_site:
-    resource: "@PhpfreaksSiteBundle/Resources/config/routing.yml"
+    resource: "@PhpfreaksSiteBundle/Controller/"
+    type:     annotation
     prefix:   /
