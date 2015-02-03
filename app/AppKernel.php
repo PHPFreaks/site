@@ -40,6 +40,7 @@ class AppKernel extends Kernel
 
             // 3rd Party Bundles
             $bundles[] = new h4cc\AliceFixturesBundle\h4ccAliceFixturesBundle();
+            $bundles[] = new JMS\TranslationBundle\JMSTranslationBundle();
         }
 
         return $bundles;

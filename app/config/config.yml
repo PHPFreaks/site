@@ -2,8 +2,8 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
-    - { resource: doctrine/doctrine_phpcr.yml }
-    - { resource: doctrine/doctrine_cache.yml }
+    - { resource: doctrine/phpcr.yml }
+    - { resource: doctrine/cache.yml }
 
 framework:
     #esi:             ~

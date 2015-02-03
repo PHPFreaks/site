@@ -1,0 +1,5 @@
+doctrine_phpcr:
+    session:
+        backend:
+            logging: true
+            profiling: true
