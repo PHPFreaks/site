@@ -1,0 +1,6 @@
+doctrine_phpcr:
+    session:
+        backend: %phpcr_backend%
+        workspace: %phpcr_workspace%
+        username: %phpcr_user%
+        password: %phpcr_password%
