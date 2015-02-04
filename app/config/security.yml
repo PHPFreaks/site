@@ -1,7 +1,7 @@
 security:
     providers:
-        in_memory:
-            memory: ~
+        fos_userbundle:
+            id: fos_user.user_manager
 
     firewalls:
         dev:
@@ -10,3 +10,9 @@ security:
 
         default:
             anonymous: ~
+            oauth:
+                login_path: /login
+                oauth_user_provider:
+                    service: hwi_oauth.user.provider.fosub_bridge
+                resource_owners:
+                    ipb: /login/check-ipb

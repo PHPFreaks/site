@@ -1,0 +1,7 @@
+hwi_oauth:
+    firewall_name: default
+    resource_owners:
+        ipb: %ipb_oauth%
+    fosub:
+        properties:
+            ipb: id

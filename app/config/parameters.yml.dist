@@ -10,15 +10,27 @@ parameters:
     # database_path: "%kernel.root_dir%/data.db3"
 
     phpcr_backend:
-        # use Jackalope Doctrine DBAL
-        type: doctrinedbal
-        connection: default
+        type:          doctrinedbal
+        connection:    default
         caches:
-            meta: doctrine_cache.providers.phpcr_meta
-            nodes: doctrine_cache.providers.phpcr_nodes
+            meta:      doctrine_cache.providers.phpcr_meta
+            nodes:     doctrine_cache.providers.phpcr_nodes
     phpcr_workspace:   default
     phpcr_user:        admin
     phpcr_password:    admin
+
+    ipb_oauth:
+        type:              oauth2
+        client_id:         client_id
+        client_secret:     client_secret
+        request_token_url: http://domain/oauth/v2/request
+        access_token_url:  http://domain/oauth/v2/access
+        authorization_url: http://domain/oauth/v2/authorize
+        infos_url:         http://domain/api/user
+        paths:
+            identifier: id
+            nickname: username
+            realname: fullname
 
     mailer_transport:  smtp
     mailer_host:       127.0.0.1
@@ -27,5 +39,4 @@ parameters:
 
     locale:            en
 
-    # A secret key that's used to generate certain security-related tokens
     secret:            cd1504720ab678f03a6359984154e639153297db
